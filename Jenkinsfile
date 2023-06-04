@@ -5,7 +5,7 @@ node{
     }
     
     stage('Maven Build'){
-        def mavenHome = tool name: "Maven-3.8.6", type: "maven"
+        def mavenHome = tool name: "Maven-3.8.5", type: "maven"
         sh "${mavenHome}/bin/mvn package"
        sh 'mv target/01-maven-web-app*.war target/srmweb.war'
     }
