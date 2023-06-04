@@ -1,7 +1,7 @@
 node{
     
     stage('Clone repo'){
-        git credentialsId: 'GIT-Credentials', url: 'https://github.com/ashokitschool/maven-web-app.git'
+        git credentialsId: 'GIT-Credentials', url: 'https://github.com/prapri77/maven-web-app.git'
     }
     
     stage('Maven Build'){
@@ -35,14 +35,14 @@ node{
 }
     
     stage('Build Image'){
-        sh 'docker build -t ashokit/mavenwebapp .'
+        sh 'docker build -t prasanth77/mavenwebapp .'
     }
     
     stage('Push Image'){
         withCredentials([string(credentialsId: 'DOCKER-CREDENTIALS', variable: 'DOCKER_CREDENTIALS')]) {
-            sh 'docker login -u ashokit -p ${DOCKER_CREDENTIALS}'
+            sh 'docker login -u prasanth77 -p ${DOCKER_CREDENTIALS}'
         }
-        sh 'docker push ashokit/mavenwebapp'
+        sh 'docker push prasanth77/mavenwebapp'
     }
     
     stage('Deploy App'){
